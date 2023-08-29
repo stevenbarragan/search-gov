@@ -13,9 +13,10 @@ interface SearchBarProps {
   locale: {
     t(key: string): string;
   };
+  relatedSites: {label: string, link: string}[];
 }
 
-export const SearchBar = ({ query = '', locale }: SearchBarProps) => {
+export const SearchBar = ({ query = '', locale, relatedSites }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -61,7 +62,7 @@ export const SearchBar = ({ query = '', locale }: SearchBarProps) => {
         
         <Grid row>
           <Grid tablet={{ col: true }}>
-            <VerticalNav />
+            <VerticalNav relatedSites={relatedSites} />
           </Grid>
         </Grid>
         
