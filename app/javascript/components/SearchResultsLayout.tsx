@@ -107,6 +107,10 @@ interface SearchResultsLayoutProps {
   locale: {
     en?: { noResultsForAndTry: string }
   };
+  relatedSites?: {
+    label: string;
+    link: string;
+  }[];
 }
 
 // To be updated
@@ -119,7 +123,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale, relatedSites = [] }: SearchResultsLayoutProps) => {
   const [language] = Object.keys(locale);
   const i18n = new I18n(locale);
   i18n.locale = language;
@@ -133,7 +137,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
-        <SearchBar query={params.query} />
+        <SearchBar query={params.query} relatedSites={relatedSites} />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
           <Results 
