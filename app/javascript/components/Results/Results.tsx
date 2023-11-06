@@ -111,6 +111,7 @@ interface ResultsProps {
   totalPages: number | null;
   vertical: string;
   newsAboutQuery?: string;
+  videosUrl?: string;
 }
 
 const getImages = (result: Result[] | null) => {
@@ -124,7 +125,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', videosUrl }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
 
