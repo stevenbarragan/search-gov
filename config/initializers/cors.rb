@@ -13,4 +13,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource '/api/v2/search/*', headers: :any, methods: %i[get head options]
     resource '/sayt', headers: :any, methods: %i[get head options]
   end
+
+  allow do
+    origins '*.cloudfront.net/*'
+    resource '*.woff2', headers: :any, methods: [:get, :head, :options]
+  end
 end
