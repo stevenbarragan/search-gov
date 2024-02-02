@@ -5,7 +5,6 @@ import { Header as UswdsHeader, Logo, Title, NavMenuButton, ExtendedNav } from '
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
-import { PageData } from '../SearchResultsLayout';
 
 import './ExtendedHeader.css';
 
@@ -71,7 +70,13 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          <Logo className="width-full" size="slim" image={page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null} />
+          <Logo
+            className="width-full"
+            size="slim"
+            image={
+              page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+            }
+          />
 
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
