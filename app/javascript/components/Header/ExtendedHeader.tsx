@@ -67,14 +67,11 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
   
-  const image = useRef(page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null);
-
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-
-          <Logo className="width-full" size="slim" image={image.current} />
+          <Logo className="width-full" size="slim" image={page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null} />
 
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
