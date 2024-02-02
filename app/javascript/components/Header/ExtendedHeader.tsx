@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { Header as UswdsHeader, Logo, Title, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
@@ -31,9 +31,6 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
     }
   }
 `;
-
-// const MyLogo = ({page}: {page: PageData}) => {
-// };
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
@@ -75,6 +72,9 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
             size="slim"
             image={
               page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+            }
+            heading={
+              <Title>{page.title}</Title>
             }
           />
 
