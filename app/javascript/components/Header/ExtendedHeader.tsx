@@ -33,15 +33,8 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
   }
 `;
 
-const MyLogo = ({page}: {page: PageData}) => {
-  const image = page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null;
-
-  return <Logo
-    className="width-full"
-    size="slim"
-    image={image}
-  />
-};
+// const MyLogo = ({page}: {page: PageData}) => {
+// };
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
@@ -74,11 +67,15 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
   
+  const image = page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null;
+
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          <MyLogo page={page} />
+
+          <Logo className="width-full" size="slim" image={image} />
+
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
