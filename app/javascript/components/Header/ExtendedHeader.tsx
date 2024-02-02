@@ -74,7 +74,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
               page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
             }
             heading={
-              <Title>{false && page.title || 'something'}</Title>
+              false && <Title>{page.title}</Title> || 'other title'
             }
           />
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
