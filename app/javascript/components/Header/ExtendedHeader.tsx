@@ -34,22 +34,12 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
 `;
 
 const MyLogo = ({page}: {page: PageData}) => {
-  if (false) {
-    return <Logo
-              className="width-full"
-              size="slim"
-              image={
-                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-              }
-            />
-  }
+  const image = page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null;
 
   return <Logo
     className="width-full"
     size="slim"
-    image={
-      page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-    }
+    image={image}
   />
 };
 
