@@ -67,16 +67,25 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          <Logo
-            className="width-full"
-            size="slim"
-            image={
-              page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-            }
-            heading={
-              false && <Title>{page.title}</Title> || 'other title'
-            }
-          />
+          {
+            false && <Logo
+              className="width-full"
+              size="slim"
+              image={
+                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+              }
+              heading={
+                <Title>{page.title}</Title>
+              }
+            /> || <Logo
+              className="width-full"
+              size="slim"
+              image={
+                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+              }
+            />
+          }
+
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
