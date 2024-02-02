@@ -5,6 +5,7 @@ import { Header as UswdsHeader, Logo, Title, NavMenuButton, ExtendedNav } from '
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
+import { PageData } from '../SearchResultsLayout';
 
 import './ExtendedHeader.css';
 
@@ -31,6 +32,26 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
     }
   }
 `;
+
+const MyLogo = ({page}: {page: PageData}) => {
+  if (false) {
+    return <Logo
+              className="width-full"
+              size="slim"
+              image={
+                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+              }
+            />
+  }
+
+  return <Logo
+    className="width-full"
+    size="slim"
+    image={
+      page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
+    }
+  />
+};
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
@@ -67,25 +88,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          {
-            false && <Logo
-              className="width-full"
-              size="slim"
-              image={
-                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-              }
-              heading={
-                <Title>{page.title}</Title>
-              }
-            /> || <Logo
-              className="width-full"
-              size="slim"
-              image={
-                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-              }
-            />
-          }
-
+          <MyLogo page={page} />
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
