@@ -63,8 +63,6 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
-  const heading = <Title>{page.title}</Title>;
-
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
@@ -76,7 +74,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
               page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
             }
             heading={
-              heading
+              <Title>{page.title}</Title>
             }
           />
 
